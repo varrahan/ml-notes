@@ -1,0 +1,1972 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Interview Answer Guide</title>
+    <style>
+        @media print {
+            body { margin: 0; padding: 20px; }
+            .page-break { page-break-before: always; }
+            .no-print { display: none; }
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 4px solid #3498db;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        h2 {
+            color: #34495e;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+        }
+        h3 {
+            color: #3498db;
+            margin-top: 20px;
+        }
+        .question {
+            background: #e8f4f8;
+            padding: 12px 15px;
+            margin: 20px 0 10px 0;
+            border-left: 4px solid #3498db;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        .answer {
+            padding: 10px 15px;
+            margin-bottom: 20px;
+            background: #f9f9f9;
+            border-left: 3px solid #95a5a6;
+        }
+        .code {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            margin: 10px 0;
+        }
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        ul, ol {
+            margin: 10px 0;
+        }
+        li {
+            margin: 8px 0;
+        }
+        .btn {
+            background: #3498db;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .btn:hover {
+            background: #2980b9;
+        }
+        .section-number {
+            color: #3498db;
+            font-weight: bold;
+        }
+        .tip {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 12px;
+            margin: 15px 0;
+        }
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 12px;
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="no-print" style="text-align: center; margin-bottom: 30px;">
+            <button class="btn" onclick="window.print()">📄 Download as PDF</button>
+            <button class="btn" onclick="document.body.style.fontSize = '14px'">A-</button>
+            <button class="btn" onclick="document.body.style.fontSize = '16px'">A</button>
+            <button class="btn" onclick="document.body.style.fontSize = '18px'">A+</button>
+        </div>
+
+        <h1>Machine Learning Interview Answer Guide</h1>
+        <p style="color: #7f8c8d; font-style: italic;">Comprehensive answers to common ML interview questions</p>
+
+        <h2><span class="section-number">1.</span> Conceptual Questions</h2>
+
+        <div class="question">What is the difference between supervised, unsupervised, and reinforcement learning?</div>
+        <div class="answer">
+            <p><strong>Supervised Learning:</strong> The model learns from labeled data (input-output pairs). The algorithm learns to map inputs to known outputs.</p>
+            <ul>
+                <li><strong>Examples:</strong> Classification (spam detection), Regression (house price prediction)</li>
+                <li><strong>Key point:</strong> Requires labeled training data</li>
+            </ul>
+            
+            <p><strong>Unsupervised Learning:</strong> The model learns patterns from unlabeled data without explicit output labels.</p>
+            <ul>
+                <li><strong>Examples:</strong> Clustering (customer segmentation), Dimensionality reduction (PCA)</li>
+                <li><strong>Key point:</strong> Discovers hidden structures in data</li>
+            </ul>
+            
+            <p><strong>Reinforcement Learning:</strong> The model learns through trial and error by receiving rewards or penalties for actions.</p>
+            <ul>
+                <li><strong>Examples:</strong> Game playing (AlphaGo), Robotics control</li>
+                <li><strong>Key point:</strong> Learns optimal behavior through environmental feedback</li>
+            </ul>
+        </div>
+
+        <div class="question">Explain overfitting and underfitting. How do you detect and prevent them?</div>
+        <div class="answer">
+            <p><strong>Overfitting:</strong> Model learns training data too well, including noise, resulting in poor generalization to new data.</p>
+            <ul>
+                <li><strong>Detection:</strong> High training accuracy but low test/validation accuracy; large gap between training and validation error</li>
+                <li><strong>Prevention:</strong>
+                    <ul>
+                        <li>Use regularization (L1/L2)</li>
+                        <li>Increase training data</li>
+                        <li>Reduce model complexity</li>
+                        <li>Early stopping</li>
+                        <li>Dropout (for neural networks)</li>
+                        <li>Cross-validation</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <p><strong>Underfitting:</strong> Model is too simple to capture underlying patterns in the data.</p>
+            <ul>
+                <li><strong>Detection:</strong> Poor performance on both training and test data; high bias</li>
+                <li><strong>Prevention:</strong>
+                    <ul>
+                        <li>Increase model complexity</li>
+                        <li>Add more features</li>
+                        <li>Reduce regularization</li>
+                        <li>Train longer</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="question">What is bias-variance tradeoff?</div>
+        <div class="answer">
+            <p>The bias-variance tradeoff describes the relationship between a model's ability to minimize bias and variance to achieve good predictive performance.</p>
+            
+            <p><strong>Bias:</strong> Error from incorrect assumptions in the learning algorithm. High bias leads to underfitting.</p>
+            <ul>
+                <li>Linear regression on non-linear data has high bias</li>
+            </ul>
+            
+            <p><strong>Variance:</strong> Error from sensitivity to small fluctuations in training data. High variance leads to overfitting.</p>
+            <ul>
+                <li>Deep decision trees have high variance</li>
+            </ul>
+            
+            <p><strong>The Tradeoff:</strong></p>
+            <ul>
+                <li>Total Error = Bias² + Variance + Irreducible Error</li>
+                <li>Decreasing bias often increases variance and vice versa</li>
+                <li>Goal: Find the sweet spot that minimizes total error</li>
+            </ul>
+            
+            <div class="tip">
+                <strong>Interview Tip:</strong> Mention that ensemble methods like Random Forest help manage this tradeoff by combining multiple models.
+            </div>
+        </div>
+
+        <div class="question">What is regularization? Explain L1 vs L2 regularization.</div>
+        <div class="answer">
+            <p><strong>Regularization:</strong> Technique to prevent overfitting by adding a penalty term to the loss function, discouraging complex models.</p>
+            
+            <p><strong>L1 Regularization (Lasso):</strong></p>
+            <ul>
+                <li>Adds penalty: λ × Σ|wᵢ|</li>
+                <li>Produces sparse models (some weights become exactly zero)</li>
+                <li>Performs feature selection automatically</li>
+                <li>Good when you have many irrelevant features</li>
+            </ul>
+            
+            <p><strong>L2 Regularization (Ridge):</strong></p>
+            <ul>
+                <li>Adds penalty: λ × Σwᵢ²</li>
+                <li>Shrinks weights but doesn't make them zero</li>
+                <li>Distributes weight across all features</li>
+                <li>Better when all features are somewhat relevant</li>
+                <li>More stable and commonly used</li>
+            </ul>
+            
+            <p><strong>Elastic Net:</strong> Combines both L1 and L2 regularization</p>
+        </div>
+
+        <div class="question">Explain precision, recall, F1-score, and ROC-AUC.</div>
+        <div class="answer">
+            <p>These are classification metrics, particularly important for imbalanced datasets:</p>
+            
+            <p><strong>Precision:</strong> Of all positive predictions, how many were correct?</p>
+            <ul>
+                <li>Formula: TP / (TP + FP)</li>
+                <li>Use when false positives are costly (e.g., spam detection)</li>
+            </ul>
+            
+            <p><strong>Recall (Sensitivity):</strong> Of all actual positives, how many did we catch?</p>
+            <ul>
+                <li>Formula: TP / (TP + FN)</li>
+                <li>Use when false negatives are costly (e.g., disease detection)</li>
+            </ul>
+            
+            <p><strong>F1-Score:</strong> Harmonic mean of precision and recall</p>
+            <ul>
+                <li>Formula: 2 × (Precision × Recall) / (Precision + Recall)</li>
+                <li>Balances precision and recall</li>
+                <li>Good for imbalanced classes</li>
+            </ul>
+            
+            <p><strong>ROC-AUC:</strong> Area Under the Receiver Operating Characteristic Curve</p>
+            <ul>
+                <li>Plots True Positive Rate vs False Positive Rate at various thresholds</li>
+                <li>AUC = 0.5: Random classifier</li>
+                <li>AUC = 1.0: Perfect classifier</li>
+                <li>Threshold-independent metric</li>
+            </ul>
+        </div>
+
+        <div class="question">What are some common metrics for regression tasks?</div>
+        <div class="answer">
+            <p><strong>Mean Absolute Error (MAE):</strong></p>
+            <ul>
+                <li>Average of absolute differences: (1/n) × Σ|yᵢ - ŷᵢ|</li>
+                <li>Same units as target variable</li>
+                <li>Less sensitive to outliers</li>
+            </ul>
+            
+            <p><strong>Mean Squared Error (MSE):</strong></p>
+            <ul>
+                <li>Average of squared differences: (1/n) × Σ(yᵢ - ŷᵢ)²</li>
+                <li>Penalizes larger errors more heavily</li>
+                <li>Not in same units as target</li>
+            </ul>
+            
+            <p><strong>Root Mean Squared Error (RMSE):</strong></p>
+            <ul>
+                <li>Square root of MSE: √MSE</li>
+                <li>Same units as target variable</li>
+                <li>Most commonly used</li>
+            </ul>
+            
+            <p><strong>R² (Coefficient of Determination):</strong></p>
+            <ul>
+                <li>Proportion of variance explained by model</li>
+                <li>Range: 0 to 1 (can be negative for bad models)</li>
+                <li>R² = 1 means perfect fit</li>
+            </ul>
+            
+            <p><strong>Mean Absolute Percentage Error (MAPE):</strong></p>
+            <ul>
+                <li>Percentage-based metric</li>
+                <li>Easy to interpret</li>
+                <li>Problems when actual values are near zero</li>
+            </ul>
+        </div>
+
+        <div class="question">Explain the curse of dimensionality.</div>
+        <div class="answer">
+            <p>The curse of dimensionality refers to various phenomena that arise when analyzing data in high-dimensional spaces that don't occur in low-dimensional settings.</p>
+            
+            <p><strong>Key Issues:</strong></p>
+            <ul>
+                <li><strong>Data Sparsity:</strong> As dimensions increase, data points become increasingly sparse. The volume of space grows exponentially, requiring exponentially more data to maintain density</li>
+                <li><strong>Distance Metrics Become Meaningless:</strong> In high dimensions, distances between points become similar, making nearest neighbor algorithms less effective</li>
+                <li><strong>Computational Cost:</strong> More features = more computation time and memory</li>
+                <li><strong>Overfitting Risk:</strong> With many features, models can easily overfit to noise</li>
+            </ul>
+            
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Feature selection (remove irrelevant features)</li>
+                <li>Dimensionality reduction (PCA, t-SNE)</li>
+                <li>Regularization</li>
+                <li>Collect more data</li>
+            </ul>
+        </div>
+
+        <div class="question">Difference between parametric and non-parametric models.</div>
+        <div class="answer">
+            <p><strong>Parametric Models:</strong></p>
+            <ul>
+                <li>Make strong assumptions about data distribution</li>
+                <li>Fixed number of parameters (doesn't grow with data)</li>
+                <li>Examples: Linear Regression, Logistic Regression, Naive Bayes</li>
+                <li><strong>Pros:</strong> Faster, require less data, easier to interpret</li>
+                <li><strong>Cons:</strong> Strong assumptions may not hold, less flexible</li>
+            </ul>
+            
+            <p><strong>Non-Parametric Models:</strong></p>
+            <ul>
+                <li>Make few assumptions about data distribution</li>
+                <li>Number of parameters can grow with training data</li>
+                <li>Examples: KNN, Decision Trees, Random Forest, SVM</li>
+                <li><strong>Pros:</strong> More flexible, can model complex patterns</li>
+                <li><strong>Cons:</strong> Require more data, slower, risk of overfitting</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+        <h2><span class="section-number">2.</span> Programming & Data Handling</h2>
+
+        <div class="question">How do you handle missing or corrupted data in a dataset?</div>
+        <div class="answer">
+            <p><strong>1. Understanding the Missing Data:</strong></p>
+            <ul>
+                <li>MCAR (Missing Completely At Random)</li>
+                <li>MAR (Missing At Random)</li>
+                <li>MNAR (Missing Not At Random)</li>
+            </ul>
+            
+            <p><strong>2. Techniques:</strong></p>
+            <ul>
+                <li><strong>Deletion:</strong>
+                    <ul>
+                        <li>Drop rows with missing values (if small percentage)</li>
+                        <li>Drop columns with many missing values</li>
+                    </ul>
+                </li>
+                <li><strong>Imputation:</strong>
+                    <ul>
+                        <li>Mean/Median/Mode for numerical features</li>
+                        <li>Forward/Backward fill for time series</li>
+                        <li>KNN imputation</li>
+                        <li>Multiple imputation</li>
+                        <li>Model-based imputation</li>
+                    </ul>
+                </li>
+                <li><strong>Create Indicator:</strong> Add binary feature indicating missingness</li>
+                <li><strong>Use algorithms that handle missing data:</strong> XGBoost, LightGBM</li>
+            </ul>
+            
+            <p><strong>For Corrupted Data:</strong></p>
+            <ul>
+                <li>Detect outliers using statistical methods (IQR, Z-score)</li>
+                <li>Visual inspection (box plots, scatter plots)</li>
+                <li>Domain knowledge to identify impossible values</li>
+                <li>Remove or cap extreme outliers</li>
+            </ul>
+        </div>
+
+        <div class="question">How would you encode categorical variables for ML models?</div>
+        <div class="answer">
+            <p><strong>1. One-Hot Encoding:</strong></p>
+            <ul>
+                <li>Creates binary column for each category</li>
+                <li>Best for nominal categories (no order)</li>
+                <li>Can lead to high dimensionality</li>
+            </ul>
+            <div class="code">from sklearn.preprocessing import OneHotEncoder
+encoder = OneHotEncoder(sparse=False, drop='first')
+encoded = encoder.fit_transform(df[['category']])</div>
+            
+            <p><strong>2. Label Encoding:</strong></p>
+            <ul>
+                <li>Assigns integer to each category</li>
+                <li>Good for ordinal data (has order)</li>
+                <li>May introduce false ordering for nominal data</li>
+            </ul>
+            <div class="code">from sklearn.preprocessing import LabelEncoder
+encoder = LabelEncoder()
+df['category_encoded'] = encoder.fit_transform(df['category'])</div>
+            
+            <p><strong>3. Target/Mean Encoding:</strong></p>
+            <ul>
+                <li>Replace category with mean of target variable</li>
+                <li>Reduces dimensionality</li>
+                <li>Risk of data leakage - use cross-validation</li>
+            </ul>
+            
+            <p><strong>4. Frequency Encoding:</strong></p>
+            <ul>
+                <li>Replace with frequency of each category</li>
+            </ul>
+            
+            <p><strong>5. Binary Encoding:</strong></p>
+            <ul>
+                <li>Convert to integer then to binary</li>
+                <li>Reduces dimensionality vs one-hot</li>
+            </ul>
+            
+            <p><strong>6. Embeddings (for deep learning):</strong></p>
+            <ul>
+                <li>Learn dense vector representations</li>
+                <li>Good for high-cardinality features</li>
+            </ul>
+        </div>
+
+        <div class="question">Write a Python function to normalize or standardize a dataset.</div>
+        <div class="answer">
+            <div class="code">import numpy as np
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+
+def normalize_data(X, method='standard'):
+    """
+    Normalize or standardize dataset
+    
+    Parameters:
+    X: array-like, features to normalize
+    method: 'standard' or 'minmax'
+    
+    Returns:
+    Normalized data and fitted scaler
+    """
+    if method == 'standard':
+        # Standardization: mean=0, std=1
+        # X_scaled = (X - mean) / std
+        scaler = StandardScaler()
+    elif method == 'minmax':
+        # Min-Max normalization: scale to [0, 1]
+        # X_scaled = (X - min) / (max - min)
+        scaler = MinMaxScaler()
+    else:
+        raise ValueError("Method must be 'standard' or 'minmax'")
+    
+    X_scaled = scaler.fit_transform(X)
+    return X_scaled, scaler
+
+# Manual implementation
+def standardize_manual(X):
+    """Standardize without sklearn"""
+    mean = np.mean(X, axis=0)
+    std = np.std(X, axis=0)
+    return (X - mean) / std
+
+def normalize_manual(X):
+    """Min-max normalize without sklearn"""
+    min_val = np.min(X, axis=0)
+    max_val = np.max(X, axis=0)
+    return (X - min_val) / (max_val - min_val)</div>
+        </div>
+
+        <div class="question">How do you split data into training, validation, and test sets?</div>
+        <div class="answer">
+            <div class="code">from sklearn.model_selection import train_test_split
+
+def split_data(X, y, train_size=0.7, val_size=0.15, 
+               test_size=0.15, random_state=42):
+    """
+    Split data into train, validation, and test sets
+    
+    Common splits:
+    - 70/15/15 or 80/10/10 for large datasets
+    - 60/20/20 for smaller datasets
+    """
+    # First split: separate test set
+    X_temp, X_test, y_temp, y_test = train_test_split(
+        X, y, 
+        test_size=test_size, 
+        random_state=random_state,
+        stratify=y  # Maintain class distribution
+    )
+    
+    # Second split: separate train and validation
+    val_ratio = val_size / (train_size + val_size)
+    X_train, X_val, y_train, y_val = train_test_split(
+        X_temp, y_temp,
+        test_size=val_ratio,
+        random_state=random_state,
+        stratify=y_temp
+    )
+    
+    return X_train, X_val, X_test, y_train, y_val, y_test
+
+# For time series data - no shuffling!
+def split_time_series(X, y, train_size=0.7, val_size=0.15):
+    """Split time series maintaining temporal order"""
+    n = len(X)
+    train_end = int(n * train_size)
+    val_end = int(n * (train_size + val_size))
+    
+    X_train, y_train = X[:train_end], y[:train_end]
+    X_val, y_val = X[train_end:val_end], y[train_end:val_end]
+    X_test, y_test = X[val_end:], y[val_end:]
+    
+    return X_train, X_val, X_test, y_train, y_val, y_test</div>
+        </div>
+
+        <div class="question">Given a dataset in CSV, how would you load it and prepare it for a machine learning pipeline?</div>
+        <div class="answer">
+            <div class="code">import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler, LabelEncoder
+
+def prepare_ml_pipeline(filepath):
+    """
+    Complete ML data preparation pipeline
+    """
+    # 1. Load data
+    df = pd.read_csv(filepath)
+    
+    # 2. Basic exploration
+    print(f"Shape: {df.shape}")
+    print(f"Missing values:\n{df.isnull().sum()}")
+    print(f"Data types:\n{df.dtypes}")
+    
+    # 3. Handle missing values
+    # Numerical: fill with median
+    numerical_cols = df.select_dtypes(include=[np.number]).columns
+    df[numerical_cols] = df[numerical_cols].fillna(
+        df[numerical_cols].median()
+    )
+    
+    # Categorical: fill with mode
+    categorical_cols = df.select_dtypes(include=['object']).columns
+    for col in categorical_cols:
+        df[col].fillna(df[col].mode()[0], inplace=True)
+    
+    # 4. Encode categorical variables
+    label_encoders = {}
+    for col in categorical_cols:
+        if col != 'target':  # Don't encode target yet
+            le = LabelEncoder()
+            df[col] = le.fit_transform(df[col])
+            label_encoders[col] = le
+    
+    # 5. Separate features and target
+    X = df.drop('target', axis=1)
+    y = df['target']
+    
+    # 6. Encode target if categorical
+    if y.dtype == 'object':
+        le_target = LabelEncoder()
+        y = le_target.fit_transform(y)
+    
+    # 7. Train-test split
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42, stratify=y
+    )
+    
+    # 8. Scale features
+    scaler = StandardScaler()
+    X_train_scaled = scaler.fit_transform(X_train)
+    X_test_scaled = scaler.transform(X_test)
+    
+    return (X_train_scaled, X_test_scaled, 
+            y_train, y_test, 
+            scaler, label_encoders)
+
+# Usage
+X_train, X_test, y_train, y_test, scaler, encoders = \
+    prepare_ml_pipeline('data.csv')</div>
+        </div>
+
+        <div class="question">What are Python libraries you have used for ML? Compare NumPy, Pandas, Scikit-learn, and TensorFlow/PyTorch.</div>
+        <div class="answer">
+            <p><strong>NumPy:</strong></p>
+            <ul>
+                <li>Fundamental package for numerical computing</li>
+                <li>Efficient multi-dimensional arrays</li>
+                <li>Mathematical functions</li>
+                <li>Foundation for other libraries</li>
+                <li>Use for: Matrix operations, mathematical computations</li>
+            </ul>
+            
+            <p><strong>Pandas:</strong></p>
+            <ul>
+                <li>Data manipulation and analysis</li>
+                <li>DataFrame structure for tabular data</li>
+                <li>Data cleaning, transformation, aggregation</li>
+                <li>Built on NumPy</li>
+                <li>Use for: Loading data, EDA, feature engineering</li>
+            </ul>
+            
+            <p><strong>Scikit-learn:</strong></p>
+            <ul>
+                <li>Machine learning algorithms</li>
+                <li>Classical ML: regression, classification, clustering</li>
+                <li>Preprocessing, model selection, evaluation</li>
+                <li>Consistent API</li>
+                <li>Use for: Traditional ML models, quick prototyping</li>
+            </ul>
+            
+            <p><strong>TensorFlow:</strong></p>
+            <ul>
+                <li>Deep learning framework by Google</li>
+                <li>Production-ready, scalable</li>
+                <li>TensorFlow Lite for mobile</li>
+                <li>TensorFlow.js for web</li>
+                <li>Steeper learning curve</li>
+                <li>Use for: Deep learning, production deployment</li>
+            </ul>
+            
+            <p><strong>PyTorch:</strong></p>
+            <ul>
+                <li>Deep learning framework by Facebook</li>
+                <li>More Pythonic, dynamic computation graphs</li>
+                <li>Popular in research</li>
+                <li>Easier debugging</li>
+                <li>Use for: Deep learning research, prototyping</li>
+            </ul>
+            
+            <div class="tip">
+                <strong>Interview Tip:</strong> Mention that you'd use Scikit-learn for traditional ML, and TensorFlow/PyTorch for deep learning. Pandas for data prep, NumPy for computations.
+            </div>
+        </div>
+
+        <div class="page-break"></div>
+        <h2><span class="section-number">3.</span> Algorithms & Math</h2>
+
+        <div class="question">Explain gradient descent. How does learning rate affect convergence?</div>
+        <div class="answer">
+            <p><strong>Gradient Descent:</strong> Optimization algorithm that iteratively adjusts model parameters to minimize a cost function.</p>
+            
+            <p><strong>Algorithm:</strong></p>
+            <ol>
+                <li>Initialize parameters θ randomly</li>
+                <li>Compute cost function J(θ)</li>
+                <li>Calculate gradient ∇J(θ)</li>
+                <li>Update: θ = θ - α × ∇J(θ)</li>
+                <li>Repeat until convergence</li>
+            </ol>
+            
+            <p><strong>Learning Rate (α) Effects:</strong></p>
+            <ul>
+                <li><strong>Too High:</strong> May overshoot minimum, diverge, oscillate</li>
+                <li><strong>Too Low:</strong> Converges very slowly, may get stuck in local minima</li>
+                <li><strong>Optimal:</strong> Converges efficiently to minimum</li>
+            </ul>
+            
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li>Learning rate scheduling (decay over time)</li>
+                <li>Adaptive learning rates (Adam, RMSprop)</li>
+                <li>Grid search or random search for α</li>
+            </ul>
+        </div>
+
+        <div class="question">What is the difference between batch, mini-batch, and stochastic gradient descent?</div>
+        <div class="answer">
+            <p><strong>Batch Gradient Descent:</strong></p>
+            <ul>
+                <li>Uses entire dataset to compute gradient</li>
+                <li>θ = θ - α × ∇J(θ) computed on all samples</li>
+                <li><strong>Pros:</strong> Stable convergence, accurate gradient</li>
+                <li><strong>Cons:</strong> Slow for large datasets, high memory usage</li>
+            </ul>
+            
+            <p><strong>Stochastic Gradient Descent (SGD):</strong></p>
+            <ul>
+                <li>Uses one random sample at a time</li>
+                <li>Updates after each sample</li>
+                <li><strong>Pros:</strong> Fast, can escape local minima</li>
+                <li><strong>Cons:</strong> Noisy updates, doesn't converge smoothly</li>
+            </ul>
+            
+            <p><strong>Mini-Batch Gradient Descent:</strong></p>
+            <ul>
+                <li>Uses small batches (typically 32, 64, 128, 256)</li>
+                <li>Best of both worlds</li>
+                <li><strong>Pros:</strong> Balance between speed and stability, vectorization benefits</li>
+                <li><strong>Cons:</strong> Need to tune batch size</li>
+            </ul>
+            
+            <div class="tip">
+                <strong>Most Common:</strong> Mini-batch is the default in modern ML frameworks.
+            </div>
+        </div>
+
+        <div class="question">Explain the difference between correlation and covariance.</div>
+        <div class="answer">
+            <p><strong>Covariance:</strong></p>
+            <ul>
+                <li>Measures how two variables change together</li>
+                <li>Formula: Cov(X,Y) = E[(X - μₓ)(Y - μᵧ)]</li>
+                <li>Positive: variables move in same direction</li>
+                <li>Negative: variables move in opposite directions</li>
+                <li>Zero: no linear relationship</li>
+                <li><strong>Issue:</strong> Scale-dependent, hard to interpret magnitude</li>
+            </ul>
+            
+            <p><strong>Correlation (Pearson's r):</strong></p>
+            <ul>
+                <li>Normalized version of covariance</li>
+                <li>Formula: r = Cov(X,Y) / (σₓ × σᵧ)</li>
+                <li>Range: -1 to +1</li>
+                <li>-1: perfect negative correlation</li>
+                <li>0: no linear correlation</li>
+                <li>+1: perfect positive correlation</li>
+                <li><strong>Advantage:</strong> Scale-independent, easy to interpret</li>
+            </ul>
+            
+            <div class="warning">
+                <strong>Important:</strong> Both only measure LINEAR relationships. Can miss non-linear dependencies.
+            </div>
+        </div>
+
+        <div class="question">What is the role of eigenvectors and eigenvalues in PCA?</div>
+        <div class="answer">
+            <p><strong>Principal Component Analysis (PCA):</strong> Dimensionality reduction technique that finds orthogonal axes that capture maximum variance.</p>
+            
+            <p><strong>Eigenvectors:</strong></p>
+            <ul>
+                <li>Define the directions of principal components</li>
+                <li>Each eigenvector represents a direction in feature space</li>
+                <li>Orthogonal to each other (uncorrelated components)</li>
+                <li>The first eigenvector points in direction of maximum variance</li>
+            </ul>
+            
+            <p><strong>Eigenvalues:</strong></p>
+            <ul>
+                <li>Represent amount of variance captured by each eigenvector</li>
+                <li>Larger eigenvalue = more important component</li>
+                <li>Used to determine how many components to keep</li>
+                <li>Sum of all eigenvalues = total variance in data</li>
+            </ul>
+            
+            <p><strong>PCA Process:</strong></p>
+            <ol>
+                <li>Standardize the data</li>
+                <li>Compute covariance matrix</li>
+                <li>Calculate eigenvectors and eigenvalues of covariance matrix</li>
+                <li>Sort eigenvalues in descending order</li>
+                <li>Select top k eigenvectors (principal components)</li>
+                <li>Transform data to new k-dimensional space</li>
+            </ol>
+        </div>
+
+        <div class="question">Describe how a decision tree splits data. What is information gain?</div>
+        <div class="answer">
+            <p><strong>Decision Tree Splitting:</strong></p>
+            <p>Decision trees recursively partition data by choosing the best feature and threshold at each node to maximize homogeneity in child nodes.</p>
+            
+            <p><strong>Splitting Criteria:</strong></p>
+            
+            <p><strong>1. Information Gain (based on Entropy):</strong></p>
+            <ul>
+                <li>Measures reduction in entropy (uncertainty) after split</li>
+                <li>Entropy: H(S) = -Σ pᵢ log₂(pᵢ)</li>
+                <li>Information Gain = H(parent) - Weighted_Average(H(children))</li>
+                <li>Choose split with highest information gain</li>
+                <li>Used in ID3 and C4.5 algorithms</li>
+            </ul>
+            
+            <p><strong>2. Gini Impurity:</strong></p>
+            <ul>
+                <li>Measures probability of incorrect classification</li>
+                <li>Gini = 1 - Σ pᵢ²</li>
+                <li>Choose split with lowest Gini impurity</li>
+                <li>Used in CART algorithm (Scikit-learn default)</li>
+                <li>Faster to compute than entropy</li>
+            </ul>
+            
+            <p><strong>3. Variance Reduction (for regression):</strong></p>
+            <ul>
+                <li>Minimize variance in child nodes</li>
+            </ul>
+            
+            <p><strong>Process:</strong></p>
+            <ol>
+                <li>For each feature, try all possible split points</li>
+                <li>Calculate information gain or Gini for each split</li>
+                <li>Choose the split with best score</li>
+                <li>Recursively repeat for child nodes</li>
+                <li>Stop when: max depth reached, min samples met, or no improvement</li>
+            </ol>
+        </div>
+
+        <div class="question">What is a confusion matrix?</div>
+        <div class="answer">
+            <p>A confusion matrix is a table showing the performance of a classification model by comparing predicted vs actual labels.</p>
+            
+            <p><strong>For Binary Classification:</strong></p>
+            <div class="code">                    Predicted
+                Positive  Negative
+Actual  Positive    TP        FN
+        Negative    FP        TN</div>
+            
+            <ul>
+                <li><strong>True Positive (TP):</strong> Correctly predicted positive</li>
+                <li><strong>True Negative (TN):</strong> Correctly predicted negative</li>
+                <li><strong>False Positive (FP):</strong> Incorrectly predicted positive (Type I error)</li>
+                <li><strong>False Negative (FN):</strong> Incorrectly predicted negative (Type II error)</li>
+            </ul>
+            
+            <p><strong>Derived Metrics:</strong></p>
+            <ul>
+                <li><strong>Accuracy:</strong> (TP + TN) / Total</li>
+                <li><strong>Precision:</strong> TP / (TP + FP)</li>
+                <li><strong>Recall:</strong> TP / (TP + FN)</li>
+                <li><strong>Specificity:</strong> TN / (TN + FP)</li>
+            </ul>
+            
+            <div class="code">from sklearn.metrics import confusion_matrix
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+cm = confusion_matrix(y_true, y_pred)
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues')
+plt.ylabel('Actual')
+plt.xlabel('Predicted')
+plt.show()</div>
+        </div>
+
+        <div class="page-break"></div>
+        <h2><span class="section-number">4.</span> Machine Learning Algorithms</h2>
+
+        <div class="question">Compare Linear Regression vs Logistic Regression.</div>
+        <div class="answer">
+            <p><strong>Linear Regression:</strong></p>
+            <ul>
+                <li><strong>Task:</strong> Regression (predict continuous values)</li>
+                <li><strong>Output:</strong> Real number (-∞ to +∞)</li>
+                <li><strong>Function:</strong> y = β₀ + β₁x₁ + β₂x₂ + ...</li>
+                <li><strong>Loss:</strong> Mean Squared Error</li>
+                <li><strong>Example:</strong> Predicting house prices, temperature</li>
+            </ul>
+            
+            <p><strong>Logistic Regression:</strong></p>
+            <ul>
+                <li><strong>Task:</strong> Classification (predict categories)</li>
+                <li><strong>Output:</strong> Probability (0 to 1)</li>
+                <li><strong>Function:</strong> P(y=1) = 1 / (1 + e^(-z)) where z = β₀ + β₁x₁ + ...</li>
+                <li><strong>Loss:</strong> Log Loss (Cross-Entropy)</li>
+                <li><strong>Example:</strong> Spam detection, disease diagnosis</li>
+            </ul>
+            
+            <p><strong>Key Differences:</strong></p>
+            <ul>
+                <li>Linear: No activation function | Logistic: Sigmoid activation</li>
+                <li>Linear: Direct prediction | Logistic: Probability then threshold</li>
+                <li>Linear: Assumes linear relationship | Logistic: Models log-odds</li>
+            </ul>
+        </div>
+
+        <div class="question">When would you use K-Nearest Neighbors? What are its drawbacks?</div>
+        <div class="answer">
+            <p><strong>When to Use KNN:</strong></p>
+            <ul>
+                <li>Small to medium-sized datasets</li>
+                <li>When decision boundary is very irregular</li>
+                <li>For both classification and regression</li>
+                <li>When interpretability is important (decisions based on similar examples)</li>
+                <li>As a baseline model</li>
+                <li>When you don't want to make assumptions about data distribution</li>
+            </ul>
+            
+            <p><strong>How KNN Works:</strong></p>
+            <ol>
+                <li>Choose k (number of neighbors)</li>
+                <li>Calculate distance to all training points</li>
+                <li>Find k nearest neighbors</li>
+                <li>Classification: Vote by majority class</li>
+                <li>Regression: Average of neighbor values</li>
+            </ol>
+            
+            <p><strong>Drawbacks:</strong></p>
+            <ul>
+                <li><strong>Computational Cost:</strong> Must compute distance to all points at prediction time (slow for large datasets)</li>
+                <li><strong>Storage:</strong> Must store entire training dataset</li>
+                <li><strong>Curse of Dimensionality:</strong> Performance degrades in high dimensions</li>
+                <li><strong>Sensitive to Feature Scales:</strong> Must normalize features</li>
+                <li><strong>Sensitive to Irrelevant Features:</strong> All features equally weighted</li>
+                <li><strong>Imbalanced Data:</strong> Biased toward majority class</li>
+                <li><strong>Choosing k:</strong> Difficult to select optimal k</li>
+            </ul>
+            
+            <div class="tip">
+                <strong>Best Practices:</strong> Always normalize features, use cross-validation to select k, consider using KD-trees or Ball-trees for faster search.
+            </div>
+        </div>
+
+        <div class="question">Explain SVM (Support Vector Machine) and kernel trick.</div>
+        <div class="answer">
+            <p><strong>Support Vector Machine:</strong></p>
+            <p>SVM finds the optimal hyperplane that maximizes the margin between different classes.</p>
+            
+            <p><strong>Key Concepts:</strong></p>
+            <ul>
+                <li><strong>Hyperplane:</strong> Decision boundary separating classes</li>
+                <li><strong>Support Vectors:</strong> Data points closest to hyperplane that define the margin</li>
+                <li><strong>Margin:</strong> Distance between hyperplane and nearest points from each class</li>
+                <li><strong>Goal:</strong> Maximize margin (robust to noise and generalization)</li>
+            </ul>
+            
+            <p><strong>Kernel Trick:</strong></p>
+            <p>Allows SVM to handle non-linear decision boundaries by mapping data to higher-dimensional space without explicitly computing the transformation.</p>
+            
+            <ul>
+                <li><strong>Linear Kernel:</strong> K(x,y) = x^T y (for linearly separable data)</li>
+                <li><strong>Polynomial Kernel:</strong> K(x,y) = (x^T y + c)^d</li>
+                <li><strong>RBF (Gaussian) Kernel:</strong> K(x,y) = exp(-γ ||x-y||²) (most popular, handles non-linear data)</li>
+                <li><strong>Sigmoid Kernel:</strong> K(x,y) = tanh(αx^T y + c)</li>
+            </ul>
+            
+            <p><strong>Advantages:</strong></p>
+            <ul>
+                <li>Effective in high dimensions</li>
+                <li>Memory efficient (only uses support vectors)</li>
+                <li>Works well with clear margin of separation</li>
+            </ul>
+            
+            <p><strong>Disadvantages:</strong></p>
+            <ul>
+                <li>Slow training for large datasets</li>
+                <li>Sensitive to feature scaling</li>
+                <li>Choosing right kernel and parameters can be tricky</li>
+                <li>Not probabilistic output by default</li>
+            </ul>
+        </div>
+
+        <div class="question">What is the difference between bagging and boosting?</div>
+        <div class="answer">
+            <p>Both are ensemble methods that combine multiple models, but they differ in approach:</p>
+            
+            <p><strong>Bagging (Bootstrap Aggregating):</strong></p>
+            <ul>
+                <li><strong>Training:</strong> Models trained in parallel independently</li>
+                <li><strong>Data:</strong> Bootstrap samples (random sampling with replacement)</li>
+                <li><strong>Goal:</strong> Reduce variance, prevent overfitting</li>
+                <li><strong>Combination:</strong> Average (regression) or vote (classification)</li>
+                <li><strong>Example:</strong> Random Forest</li>
+                <li><strong>Best for:</strong> High variance, complex models (like deep trees)</li>
+            </ul>
+            
+            <p><strong>Boosting:</strong></p>
+            <ul>
+                <li><strong>Training:</strong> Models trained sequentially</li>
+                <li><strong>Data:</strong> Same dataset, but reweighted based on errors</li>
+                <li><strong>Goal:</strong> Reduce bias, focus on hard examples</li>
+                <li><strong>Combination:</strong> Weighted sum based on model performance</li>
+                <li><strong>Examples:</strong> AdaBoost, Gradient Boosting, XGBoost</li>
+                <li><strong>Best for:</strong> High bias, simple models (like shallow trees)</li>
+            </ul>
+            
+            <p><strong>Key Differences:</strong></p>
+            <table style="width: 100%; border-collapse: collapse; margin: 10px 0;">
+                <tr style="background: #3498db; color: white;">
+                    <th style="padding: 8px; border: 1px solid #ddd;">Aspect</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">Bagging</th>
+                    <th style="padding: 8px; border: 1px solid #ddd;">Boosting</th>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Training</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Parallel</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Sequential</td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td style="padding: 8px; border: 1px solid #ddd;">Focus</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Reduce variance</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Reduce bias</td>
+                </tr>
+                <tr>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Weighting</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Equal weights</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Weighted by performance</td>
+                </tr>
+                <tr style="background: #f9f9f9;">
+                    <td style="padding: 8px; border: 1px solid #ddd;">Overfitting</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Reduces overfitting</td>
+                    <td style="padding: 8px; border: 1px solid #ddd;">Can overfit if not careful</td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="question">Explain the difference between Random Forest and Gradient Boosting.</div>
+        <div class="answer">
+            <p><strong>Random Forest (Bagging):</strong></p>
+            <ul>
+                <li>Builds multiple deep decision trees in parallel</li>
+                <li>Each tree trained on random bootstrap sample</li>
+                <li>Random subset of features at each split</li>
+                <li>Final prediction: average/vote of all trees</li>
+                <li>Less prone to overfitting</li>
+                <li>Faster training (parallel)</li>
+                <li>Less sensitive to hyperparameters</li>
+            </ul>
+            
+            <p><strong>Gradient Boosting (Boosting):</strong></p>
+            <ul>
+                <li>Builds shallow trees sequentially</li>
+                <li>Each tree corrects errors of previous trees</li>
+                <li>Fits residuals/gradients of loss function</li>
+                <li>Final prediction: weighted sum of all trees</li>
+                <li>Can overfit if not tuned properly</li>
+                <li>Slower training (sequential)</li>
+                <li>More hyperparameters to tune</li>
+                <li>Often achieves better accuracy</li>
+            </ul>
+            
+            <p><strong>When to Use:</strong></p>
+            <ul>
+                <li><strong>Random Forest:</strong> Good default choice, less tuning needed, want robustness</li>
+                <li><strong>Gradient Boosting:</strong> Need best performance, willing to tune carefully, have time for sequential training</li>
+            </ul>
+            
+            <div class="tip">
+                <strong>Modern Variants:</strong> XGBoost, LightGBM, and CatBoost are optimized gradient boosting implementations that are faster and often perform better.
+            </div>
+        </div>
+
+        <div class="question">How do you evaluate clustering algorithms like K-Means?</div>
+        <div class="answer">
+            <p>Since clustering is unsupervised, evaluation is more challenging:</p>
+            
+            <p><strong>Internal Metrics (No ground truth needed):</strong></p>
+            
+            <p><strong>1. Inertia (Within-Cluster Sum of Squares):</strong></p>
+            <ul>
+                <li>Sum of squared distances to nearest cluster center</li>
+                <li>Lower is better</li>
+                <li>Used in elbow method</li>
+            </ul>
+            
+            <p><strong>2. Silhouette Score:</strong></p>
+            <ul>
+                <li>Measures how similar object is to its cluster vs other clusters</li>
+                <li>Range: -1 to +1</li>
+                <li>Higher is better (closer to 1)</li>
+                <li>Most commonly used metric</li>
+            </ul>
+            
+            <p><strong>3. Davies-Bouldin Index:</strong></p>
+            <ul>
+                <li>Ratio of within-cluster to between-cluster distances</li>
+                <li>Lower is better</li>
+            </ul>
+            
+            <p><strong>4. Calinski-Harabasz Index:</strong></p>
+            <ul>
+                <li>Ratio of between-cluster to within-cluster dispersion</li>
+                <li>Higher is better</li>
+            </ul>
+            
+            <p><strong>External Metrics (Ground truth available):</strong></p>
+            <ul>
+                <li><strong>Adjusted Rand Index (ARI):</strong> Measures agreement between clustering and ground truth</li>
+                <li><strong>Normalized Mutual Information (NMI):</strong> Information shared between clusters and labels</li>
+                <li><strong>Fowlkes-Mallows Score:</strong> Geometric mean of precision and recall</li>
+            </ul>
+            
+            <p><strong>Practical Methods:</strong></p>
+            <ul>
+                <li><strong>Elbow Method:</strong> Plot inertia vs k, look for "elbow"</li>
+                <li><strong>Visual Inspection:</strong> Plot clusters (if 2-3 dimensions or use dimensionality reduction)</li>
+                <li><strong>Domain Knowledge:</strong> Do clusters make business sense?</li>
+            </ul>
+            
+            <div class="code">from sklearn.metrics import silhouette_score
+from sklearn.cluster import KMeans
+
+# Find optimal k
+silhouette_scores = []
+for k in range(2, 11):
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    labels = kmeans.fit_predict(X)
+    score = silhouette_score(X, labels)
+    silhouette_scores.append(score)
+
+optimal_k = silhouette_scores.index(max(silhouette_scores)) + 2</div>
+        </div>
+
+        <div class="page-break"></div>
+        <h2><span class="section-number">5.</span> Applied Machine Learning</h2>
+
+        <div class="question">Describe the steps you would take to solve a real-world ML problem.</div>
+        <div class="answer">
+            <p><strong>1. Problem Definition:</strong></p>
+            <ul>
+                <li>Understand business objective</li>
+                <li>Define success metrics</li>
+                <li>Determine ML task type (classification, regression, etc.)</li>
+                <li>Assess feasibility and requirements</li>
+            </ul>
+            
+            <p><strong>2. Data Collection & Understanding:</strong></p>
+            <ul>
+                <li>Gather relevant data sources</li>
+                <li>Exploratory Data Analysis (EDA)</li>
+                <li>Check data quality, missing values, distributions</li>
+                <li>Understand features and target variable</li>
+            </ul>
+            
+            <p><strong>3. Data Preparation:</strong></p>
+            <ul>
+                <li>Handle missing values</li>
+                <li>Remove duplicates and outliers</li>
+                <li>Feature engineering (create new features)</li>
+                <li>Encode categorical variables</li>
+                <li>Feature scaling/normalization</li>
+                <li>Split into train/validation/test sets</li>
+            </ul>
+            
+            <p><strong>4. Model Selection:</strong></p>
+            <ul>
+                <li>Start with simple baseline model</li>
+                <li>Try multiple algorithms</li>
+                <li>Consider constraints (interpretability, latency, resources)</li>
+            </ul>
+            
+            <p><strong>5. Model Training:</strong></p>
+            <ul>
+                <li>Train models on training data</li>
+                <li>Use cross-validation</li>
+                <li>Tune hyperparameters</li>
+                <li>Monitor for overfitting/underfitting</li>
+            </ul>
+            
+            <p><strong>6. Model Evaluation:</strong></p>
+            <ul>
+                <li>Evaluate on validation set</li>
+                <li>Use appropriate metrics</li>
+                <li>Compare multiple models</li>
+                <li>Error analysis</li>
+            </ul>
+            
+            <p><strong>7. Final Testing:</strong></p>
+            <ul>
+                <li>Test on held-out test set (only once!)</li>
+                <li>Ensure no data leakage</li>
+            </ul>
+            
+            <p><strong>8. Deployment:</strong></p>
+            <ul>
+                <li>Package model for production</li>
+                <li>Set up API/service</li>
+                <li>Implement monitoring</li>
+                <li>A/B testing</li>
+            </ul>
+            
+            <p><strong>9. Monitoring & Maintenance:</strong></p>
+            <ul>
+                <li>Track model performance over time</li>
+                <li>Monitor for data drift</li>
+                <li>Retrain periodically</li>
+                <li>Collect feedback</li>
+            </ul>
+        </div>
+
+        <div class="question">How would you handle class imbalance in a dataset?</div>
+        <div class="answer">
+            <p>Class imbalance occurs when one class significantly outnumbers others (e.g., fraud detection: 99% normal, 1% fraud)</p>
+            
+            <p><strong>1. Resampling Techniques:</strong></p>
+            <ul>
+                <li><strong>Oversampling minority class:</strong>
+                    <ul>
+                        <li>Random oversampling (duplicate examples)</li>
+                        <li>SMOTE (Synthetic Minority Over-sampling): creates synthetic examples</li>
+                        <li>ADASYN: adaptive synthetic sampling</li>
+                    </ul>
+                </li>
+                <li><strong>Undersampling majority class:</strong>
+                    <ul>
+                        <li>Random undersampling</li>
+                        <li>Tomek links</li>
+                        <li>Can lose information</li>
+                    </ul>
+                </li>
+                <li><strong>Combination:</strong> Both over and under sampling</li>
+            </ul>
+            
+            <p><strong>2. Algorithm-Level Approaches:</strong></p>
+            <ul>
+                <li><strong>Class weights:</strong> Penalize misclassification of minority class more
+                    <div class="code">from sklearn.linear_model import LogisticRegression
+model = LogisticRegression(class_weight='balanced')</div>
+                </li>
+                <li><strong>Ensemble methods:</strong> Balanced Random Forest, EasyEnsemble</li>
+            </ul>
+            
+            <p><strong>3. Evaluation Metrics:</strong></p>
+            <ul>
+                <li>Don't use accuracy! (99% accuracy by always predicting majority)</li>
+                <li>Use: Precision, Recall, F1-Score, ROC-AUC, PR-AUC</li>
+                <li>Focus on minority class performance</li>
+            </ul>
+            
+            <p><strong>4. Threshold Adjustment:</strong></p>
+            <ul>
+                <li>Adjust decision threshold based on cost/benefit</li>
+                <li>Lower threshold to catch more positive cases</li>
+            </ul>
+            
+            <p><strong>5. Collect More Data:</strong></p>
+            <ul>
+                <li>Especially for minority class</li>
+            </ul>
+            
+            <p><strong>6. Anomaly Detection:</strong></p>
+            <ul>
+                <li>For extreme imbalance (fraud, rare disease)</li>
+                <li>Treat minority as outliers</li>
+            </ul>
+        </div>
+
+        <div class="question">How would you prevent data leakage?</div>
+        <div class="answer">
+            <p><strong>Data Leakage:</strong> When information from outside the training dataset influences the model, leading to overly optimistic performance that doesn't generalize.</p>
+            
+            <p><strong>Types of Data Leakage:</strong></p>
+            
+            <p><strong>1. Target Leakage:</strong></p>
+            <ul>
+                <li>Using features that won't be available at prediction time</li>
+                <li>Example: Using "purchase amount" to predict "will purchase" (amount only exists after purchase)</li>
+            </ul>
+            
+            <p><strong>2. Train-Test Contamination:</strong></p>
+            <ul>
+                <li>Test data influencing training process</li>
+                <li>Example: Fitting scaler on entire dataset before split</li>
+            </ul>
+            
+            <p><strong>How to Prevent:</strong></p>
+            
+            <p><strong>1. Proper Data Splitting:</strong></p>
+            <ul>
+                <li>Split data FIRST, before any preprocessing</li>
+                <li>Never touch test data during training</li>
+                <li>For time series: respect temporal order</li>
+            </ul>
+            
+            <p><strong>2. Fit on Training Only:</strong></p>
+            <div class="code"># WRONG
+scaler.fit(X)  # Fits on all data
+X_train, X_test = train_test_split(X)
+
+# CORRECT
+X_train, X_test = train_test_split(X)
+scaler.fit(X_train)  # Fit only on training
+X_train_scaled = scaler.transform(X_train)
+X_test_scaled = scaler.transform(X_test)</div>
+            
+            <p><strong>3. Use Pipelines:</strong></p>
+            <ul>
+                <li>sklearn Pipeline ensures proper order</li>
+                <li>Prevents accidentally leaking information</li>
+            </ul>
+            
+            <p><strong>4. Time-Based Validation:</strong></p>
+            <ul>
+                <li>For time series, use TimeSeriesSplit</li>
+                <li>Train on past, predict future</li>
+                <li>Never shuffle time-series data</li>
+            </ul>
+            
+            <p><strong>5. Feature Engineering Awareness:</strong></p>
+            <ul>
+                <li>Only use information available at prediction time</li>
+                <li>Avoid features derived from target</li>
+                <li>Be careful with aggregated features</li>
+            </ul>
+            
+            <p><strong>6. Cross-Validation Done Right:</strong></p>
+            <ul>
+                <li>Preprocessing inside CV folds, not before</li>
+            </ul>
+            
+            <div class="warning">
+                <strong>Red Flags:</strong> Performance too good to be true, huge gap between CV and test, one feature with abnormally high importance.
+            </div>
+        </div>
+
+        <div class="question">How do you deploy an ML model into production?</div>
+        <div class="answer">
+            <p><strong>1. Model Serialization:</strong></p>
+            <ul>
+                <li>Save trained model to disk</li>
+                <li>Tools: pickle, joblib, ONNX, TensorFlow SavedModel</li>
+            </ul>
+            <div class="code">import joblib
+joblib.dump(model, 'model.pkl')
+model = joblib.load('model.pkl')</div>
+            
+            <p><strong>2. Create API Service:</strong></p>
+            <ul>
+                <li>REST API using Flask, FastAPI, or Django</li>
+                <li>Input validation</li>
+                <li>Error handling</li>
+            </ul>
+            <div class="code">from fastapi import FastAPI
+import joblib
+
+app = FastAPI()
+model = joblib.load('model.pkl')
+
+@app.post("/predict")
+def predict(features: dict):
+    X = preprocess(features)
+    prediction = model.predict(X)
+    return {"prediction": prediction.tolist()}</div>
+            
+            <p><strong>3. Containerization:</strong></p>
+            <ul>
+                <li>Use Docker for consistency</li>
+                <li>Include all dependencies</li>
+            </ul>
+            
+            <p><strong>4. Deployment Options:</strong></p>
+            <ul>
+                <li><strong>Cloud Services:</strong> AWS SageMaker, Google Cloud AI, Azure ML</li>
+                <li><strong>Container Orchestration:</strong> Kubernetes</li>
+                <li><strong>Serverless:</strong> AWS Lambda, Google Cloud Functions</li>
+                <li><strong>Edge Deployment:</strong> TensorFlow Lite, ONNX Runtime</li>
+            </ul>
+            
+            <p><strong>5. Monitoring:</strong></p>
+            <ul>
+                <li>Track prediction latency</li>
+                <li>Monitor model performance metrics</li>
+                <li>Detect data drift</li>
+                <li>Log predictions and inputs</li>
+                <li>Set up alerts</li>
+            </ul>
+            
+            <p><strong>6. A/B Testing:</strong></p>
+            <ul>
+                <li>Test new model against existing</li>
+                <li>Gradually roll out to users</li>
+            </ul>
+            
+            <p><strong>7. CI/CD Pipeline:</strong></p>
+            <ul>
+                <li>Automated testing</li>
+                <li>Version control for models</li>
+                <li>Automated retraining</li>
+            </ul>
+        </div>
+
+        <div class="question">Explain cross-validation and why it is important.</div>
+        <div class="answer">
+            <p><strong>Cross-Validation:</strong> Technique to assess model performance by training and testing on different subsets of data.</p>
+            
+            <p><strong>Why Important:</strong></p>
+            <ul>
+                <li>Better estimate of model performance on unseen data</li>
+                <li>Reduces variance in performance estimate</li>
+                <li>Makes efficient use of limited data</li>
+                <li>Helps detect overfitting</li>
+                <li>More reliable than single train-test split</li>
+            </ul>
+            
+            <p><strong>Types of Cross-Validation:</strong></p>
+            
+            <p><strong>1. K-Fold Cross-Validation (most common):</strong></p>
+            <ul>
+                <li>Split data into k folds (typically 5 or 10)</li>
+                <li>Train on k-1 folds, test on remaining fold</li>
+                <li>Repeat k times, rotating test fold</li>
+                <li>Average results across all folds</li>
+            </ul>
+            <div class="code">from sklearn.model_selection import cross_val_score
+
+scores = cross_val_score(model, X, y, cv=5, 
+                         scoring='accuracy')
+print(f"Mean: {scores.mean():.3f}, Std: {scores.std():.3f}")</div>
+            
+            <p><strong>2. Stratified K-Fold:</strong></p>
+            <ul>
+                <li>Maintains class distribution in each fold</li>
+                <li>Important for imbalanced datasets</li>
+            </ul>
+            
+            <p><strong>3. Leave-One-Out (LOO):</strong></p>
+            <ul>
+                <li>k = n (number of samples)</li>
+                <li>Train on all but one sample</li>
+                <li>Computationally expensive</li>
+                <li>High variance, low bias estimate</li>
+            </ul>
+            
+            <p><strong>4. Time Series Cross-Validation:</strong></p>
+            <ul>
+                <li>Respects temporal order</li>
+                <li>Train on past, test on future</li>
+                <li>Expanding or sliding window</li>
+            </ul>
+            <div class="code">from sklearn.model_selection import TimeSeriesSplit
+
+tscv = TimeSeriesSplit(n_splits=5)
+for train_idx, test_idx in tscv.split(X):
+    X_train, X_test = X[train_idx], X[test_idx]
+    y_train, y_test = y[train_idx], y[test_idx]</div>
+            
+            <p><strong>5. Group K-Fold:</strong></p>
+            <ul>
+                <li>Ensures samples from same group stay together</li>
+                <li>Example: Multiple samples from same patient</li>
+            </ul>
+        </div>
+
+        <div class="question">How would you select features for your model?</div>
+        <div class="answer">
+            <p><strong>Why Feature Selection:</strong></p>
+            <ul>
+                <li>Reduce overfitting</li>
+                <li>Improve model performance</li>
+                <li>Reduce training time</li>
+                <li>Improve interpretability</li>
+                <li>Reduce storage and computational costs</li>
+            </ul>
+            
+            <p><strong>1. Filter Methods (Statistical tests):</strong></p>
+            <ul>
+                <li><strong>Correlation:</strong> Remove highly correlated features</li>
+                <li><strong>Chi-Square Test:</strong> For categorical features</li>
+                <li><strong>ANOVA F-test:</strong> For numerical features</li>
+                <li><strong>Mutual Information:</strong> Measures dependency</li>
+                <li>Fast but doesn't consider feature interactions</li>
+            </ul>
+            <div class="code">from sklearn.feature_selection import SelectKBest, f_classif
+
+selector = SelectKBest(f_classif, k=10)
+X_selected = selector.fit_transform(X, y)</div>
+            
+            <p><strong>2. Wrapper Methods (Use model):</strong></p>
+            <ul>
+                <li><strong>Forward Selection:</strong> Start with no features, add one at a time</li>
+                <li><strong>Backward Elimination:</strong> Start with all, remove one at a time</li>
+                <li><strong>Recursive Feature Elimination (RFE):</strong> Iteratively remove least important</li>
+                <li>More accurate but computationally expensive</li>
+            </ul>
+            <div class="code">from sklearn.feature_selection import RFE
+from sklearn.linear_model import LogisticRegression
+
+model = LogisticRegression()
+rfe = RFE(model, n_features_to_select=10)
+X_selected = rfe.fit_transform(X, y)</div>
+            
+            <p><strong>3. Embedded Methods (Built into algorithm):</strong></p>
+            <ul>
+                <li><strong>L1 Regularization (Lasso):</strong> Shrinks coefficients to zero</li>
+                <li><strong>Tree-based Feature Importance:</strong> Random Forest, XGBoost</li>
+                <li>Balance between filter and wrapper methods</li>
+            </ul>
+            <div class="code">from sklearn.ensemble import RandomForestClassifier
+
+rf = RandomForestClassifier()
+rf.fit(X, y)
+importances = rf.feature_importances_
+top_features = np.argsort(importances)[-10:]</div>
+            
+            <p><strong>4. Dimensionality Reduction:</strong></p>
+            <ul>
+                <li><strong>PCA:</strong> Creates new uncorrelated features</li>
+                <li><strong>LDA:</strong> Supervised dimensionality reduction</li>
+                <li><strong>t-SNE, UMAP:</strong> For visualization</li>
+            </ul>
+            
+            <p><strong>5. Domain Knowledge:</strong></p>
+            <ul>
+                <li>Use expert knowledge to identify relevant features</li>
+                <li>Remove obviously irrelevant features (IDs, duplicates)</li>
+            </ul>
+            
+            <p><strong>6. Variance Threshold:</strong></p>
+            <ul>
+                <li>Remove features with low variance</li>
+                <li>Constant or quasi-constant features</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+        <h2><span class="section-number">6.</span> Scenario-Based / Problem Solving</h2>
+
+        <div class="question">You have a dataset with 1M rows and 200 features. Training your model is too slow. What would you do?</div>
+        <div class="answer">
+            <p><strong>1. Data Reduction:</strong></p>
+            <ul>
+                <li><strong>Sample data:</strong> Use representative subset for prototyping</li>
+                <li><strong>Remove duplicates:</strong> Eliminate redundant rows</li>
+                <li><strong>Stratified sampling:</strong> Maintain class distribution</li>
+            </ul>
+            
+            <p><strong>2. Feature Reduction:</strong></p>
+            <ul>
+                <li><strong>Feature selection:</strong> Keep only important features</li>
+                <li><strong>PCA:</strong> Reduce dimensionality</li>
+                <li><strong>Remove low variance features</strong></li>
+                <li><strong>Remove highly correlated features</strong></li>
+            </ul>
+            
+            <p><strong>3. Algorithm Choice:</strong></p>
+            <ul>
+                <li><strong>Use faster algorithms:</strong> Linear models instead of SVM</li>
+                <li><strong>Tree-based:</strong> LightGBM (designed for large data)</li>
+                <li><strong>SGD-based:</strong> Stochastic gradient descent versions</li>
+                <li><strong>Online learning:</strong> Process data in batches</li>
+            </ul>
+            
+            <p><strong>4. Model Optimization:</strong></p>
+            <ul>
+                <li><strong>Reduce model complexity:</strong> Fewer trees, shallower depth</li>
+                <li><strong>Early stopping:</strong> Stop training when validation stops improving</li>
+                <li><strong>Use warm_start:</strong> Resume training</li>
+            </ul>
+            
+            <p><strong>5. Computational Optimization:</strong></p>
+            <ul>
+                <li><strong>Parallel processing:</strong> Use n_jobs=-1 in sklearn</li>
+                <li><strong>GPU acceleration:</strong> Use CuML, GPU versions of XGBoost</li>
+                <li><strong>Distributed computing:</strong> Spark MLlib, Dask</li>
+                <li><strong>Better hardware:</strong> More RAM, faster CPU</li>
+            </ul>
+            
+            <p><strong>6. Data Format:</strong></p>
+            <ul>
+                <li><strong>Use efficient formats:</strong> Parquet instead of CSV</li>
+                <li><strong>Optimize dtypes:</strong> Use int8/int16 instead of int64 where possible</li>
+            </ul>
+            
+            <p><strong>7. Hyperparameter Tuning:</strong></p>
+            <ul>
+                <li><strong>Random search:</strong> Instead of exhaustive grid search</li>
+                <li><strong>Bayesian optimization:</strong> More efficient search</li>
+                <li><strong>Reduce CV folds:</strong> Use 3 instead of 10</li>
+            </ul>
+        </div>
+
+        <div class="question">You trained a model and it performs well on training data but poorly on test data. How do you debug it?</div>
+        <div class="answer">
+            <p>This is classic <strong>overfitting</strong>. Here's a systematic debugging approach:</p>
+            
+            <p><strong>1. Verify the Problem:</strong></p>
+            <ul>
+                <li>Compare training vs validation vs test performance</li>
+                <li>Check if test data is from same distribution</li>
+                <li>Look for data leakage</li>
+            </ul>
+            
+            <p><strong>2. Check Data Issues:</strong></p>
+            <ul>
+                <li><strong>Data leakage:</strong> Information from test in training?</li>
+                <li><strong>Train-test split:</strong> Was it done correctly?</li>
+                <li><strong>Stratification:</strong> Do train and test have similar distributions?</li>
+                <li><strong>Time-based data:</strong> Did you accidentally shuffle time series?</li>
+            </ul>
+            
+            <p><strong>3. Reduce Overfitting:</strong></p>
+            <ul>
+                <li><strong>Regularization:</strong> Add L1/L2 regularization, increase strength</li>
+                <li><strong>Reduce model complexity:</strong>
+                    <ul>
+                        <li>Fewer layers/units in neural networks</li>
+                        <li>Shallower trees, fewer trees</li>
+                        <li>Lower polynomial degree</li>
+                    </ul>
+                </li>
+                <li><strong>Dropout:</strong> Add dropout layers (neural networks)</li>
+                <li><strong>Early stopping:</strong> Stop before overfitting</li>
+            </ul>
+            
+            <p><strong>4. Get More Data:</strong></p>
+            <ul>
+                <li>Collect more training samples</li>
+                <li><strong>Data augmentation:</strong> For images (rotation, flip, crop)</li>
+                <li><strong>Synthetic data:</strong> SMOTE for tabular data</li>
+            </ul>
+            
+            <p><strong>5. Feature Engineering:</strong></p>
+            <ul>
+                <li><strong>Remove irrelevant features:</strong> Less features = less overfitting</li>
+                <li><strong>Feature selection:</strong> Keep only important ones</li>
+                <li><strong>Check for noisy features</strong></li>
+            </ul>
+            
+            <p><strong>6. Use Ensemble Methods:</strong></p>
+            <ul>
+                <li>Bagging to reduce variance</li>
+                <li>Random Forest instead of single tree</li>
+            </ul>
+            
+            <p><strong>7. Cross-Validation:</strong></p>
+            <ul>
+                <li>Use k-fold CV to get more reliable performance estimate</li>
+                <li>Helps identify if problem is consistent</li>
+            </ul>
+            
+            <p><strong>8. Learning Curves:</strong></p>
+            <ul>
+                <li>Plot training and validation error vs dataset size</li>
+                <li>Diagnose if more data would help</li>
+            </ul>
+            
+            <div class="code">from sklearn.model_selection import learning_curve
+import matplotlib.pyplot as plt
+
+train_sizes, train_scores, val_scores = learning_curve(
+    model, X, y, cv=5, 
+    train_sizes=np.linspace(0.1, 1.0, 10)
+)
+
+plt.plot(train_sizes, train_scores.mean(axis=1), label='Train')
+plt.plot(train_sizes, val_scores.mean(axis=1), label='Validation')
+plt.legend()
+plt.show()</div>
+        </div>
+
+        <div class="question">How would you detect outliers in a dataset?</div>
+        <div class="answer">
+            <p><strong>1. Statistical Methods:</strong></p>
+            
+            <p><strong>Z-Score Method:</strong></p>
+            <ul>
+                <li>Calculate: z = (x - μ) / σ</li>
+                <li>Threshold: |z| > 3 (or 2.5)</li>
+                <li>Assumes normal distribution</li>
+            </ul>
+            <div class="code">from scipy import stats
+import numpy as np
+
+z_scores = np.abs(stats.zscore(data))
+outliers = np.where(z_scores > 3)</div>
+            
+            <p><strong>IQR (Interquartile Range) Method:</strong></p>
+            <ul>
+                <li>IQR = Q3 - Q1</li>
+                <li>Lower bound: Q1 - 1.5 × IQR</li>
+                <li>Upper bound: Q3 + 1.5 × IQR</li>
+                <li>More robust to non-normal data</li>
+            </ul>
+            <div class="code">Q1 = data.quantile(0.25)
+Q3 = data.quantile(0.75)
+IQR = Q3 - Q1
+lower = Q1 - 1.5 * IQR
+upper = Q3 + 1.5 * IQR
+outliers = data[(data < lower) | (data > upper)]</div>
+            
+            <p><strong>2. Visualization Methods:</strong></p>
+            <ul>
+                <li><strong>Box plots:</strong> Visual IQR method</li>
+                <li><strong>Scatter plots:</strong> Identify points far from cluster</li>
+                <li><strong>Histograms:</strong> See distribution tails</li>
+            </ul>
+            
+            <p><strong>3. Machine Learning Methods:</strong></p>
+            
+            <p><strong>Isolation Forest:</strong></p>
+            <ul>
+                <li>Isolates outliers using random splits</li>
+                <li>Outliers are easier to isolate</li>
+                <li>Works well in high dimensions</li>
+            </ul>
+            <div class="code">from sklearn.ensemble import IsolationForest
+
+iso_forest = IsolationForest(contamination=0.1)
+outliers = iso_forest.fit_predict(X)
+# -1 for outliers, 1 for inliers</div>
+            
+            <p><strong>Local Outlier Factor (LOF):</strong></p>
+            <ul>
+                <li>Measures local density deviation</li>
+                <li>Identifies local outliers</li>
+            </ul>
+            <div class="code">from sklearn.neighbors import LocalOutlierFactor
+
+lof = LocalOutlierFactor(n_neighbors=20)
+outliers = lof.fit_predict(X)</div>
+            
+            <p><strong>DBSCAN:</strong></p>
+            <ul>
+                <li>Density-based clustering</li>
+                <li>Points not in any cluster are outliers</li>
+            </ul>
+            
+            <p><strong>One-Class SVM:</strong></p>
+            <ul>
+                <li>Learns boundary around normal data</li>
+                <li>Points outside boundary are outliers</li>
+            </ul>
+            
+            <p><strong>4. Domain-Specific Methods:</strong></p>
+            <ul>
+                <li>Use domain knowledge to set thresholds</li>
+                <li>Identify impossible values (age = -5, temperature = 500°C)</li>
+            </ul>
+            
+            <p><strong>5. Multivariate Methods:</strong></p>
+            <ul>
+                <li><strong>Mahalanobis Distance:</strong> Considers correlation between features</li>
+                <li><strong>PCA:</strong> Project to lower dimensions, identify outliers</li>
+            </ul>
+            
+            <p><strong>What to Do with Outliers:</strong></p>
+            <ul>
+                <li><strong>Remove:</strong> If data errors or extreme anomalies</li>
+                <li><strong>Transform:</strong> Log transform, winsorization (cap at percentile)</li>
+                <li><strong>Keep:</strong> If legitimate extreme values</li>
+                <li><strong>Separate model:</strong> Build separate model for outliers</li>
+                <li><strong>Use robust algorithms:</strong> Tree-based models handle outliers well</li>
+            </ul>
+        </div>
+
+        <div class="question">Suppose your model predicts housing prices. Users say predictions are consistently too high. What could be wrong?</div>
+        <div class="answer">
+            <p><strong>1. Data-Related Issues:</strong></p>
+            <ul>
+                <li><strong>Training data bias:</strong> Training data has higher prices than current market
+                    <ul>
+                        <li>Data from expensive neighborhoods over-represented</li>
+                        <li>Old data from before market correction</li>
+                    </ul>
+                </li>
+                <li><strong>Data drift:</strong> Market conditions changed since training
+                    <ul>
+                        <li>Economic downturn</li>
+                        <li>Interest rate changes</li>
+                        <li>Local market changes</li>
+                    </ul>
+                </li>
+                <li><strong>Missing features:</strong> Not capturing factors that lower prices
+                    <ul>
+                        <li>Property condition</li>
+                        <li>Recent comparable sales</li>
+                        <li>Neighborhood trends</li>
+                    </ul>
+                </li>
+            </ul>
+            
+            <p><strong>2. Model Issues:</strong></p>
+            <ul>
+                <li><strong>Incorrect feature scaling:</strong> Some features dominating</li>
+                <li><strong>Wrong loss function:</strong> MSE penalizes large errors, might bias toward higher predictions</li>
+                <li><strong>Regularization issues:</strong> Model not fitting well</li>
+                <li><strong>Extrapolation problems:</strong> Predicting outside training range</li>
+            </ul>
+            
+            <p><strong>3. Feature Engineering Issues:</strong></p>
+            <ul>
+                <li><strong>Outlier handling:</strong> High-price outliers pulling predictions up</li>
+                <li><strong>Categorical encoding:</strong> Misrepresenting certain categories</li>
+                <li><strong>Interaction terms missing:</strong> Not capturing feature combinations</li>
+            </ul>
+            
+            <p><strong>4. Evaluation Issues:</strong></p>
+            <ul>
+                <li><strong>Wrong metric:</strong> Optimizing for wrong objective</li>
+                <li><strong>Test set not representative:</strong> Doesn't match production data</li>
+            </ul>
+            
+            <p><strong>5. Deployment Issues:</strong></p>
+            <ul>
+                <li><strong>Preprocessing mismatch:</strong> Training and production preprocessing differ</li>
+                <li><strong>Feature values changed:</strong> Input features calculated differently</li>
+                <li><strong>Model version:</strong> Wrong model version deployed</li>
+            </ul>
+            
+            <p><strong>Debugging Steps:</strong></p>
+            <ol>
+                <li><strong>Analyze errors:</strong> Plot predicted vs actual, look for patterns</li>
+                <li><strong>Check data distribution:</strong> Compare training vs production data</li>
+                <li><strong>Feature importance:</strong> Which features driving high predictions?</li>
+                <li><strong>Residual analysis:</strong> Are errors systematic?</li>
+                <li><strong>Temporal analysis:</strong> When did this start? Gradual or sudden?</li>
+                <li><strong>Segment analysis:</strong> Which types of houses affected most?</li>
+            </ol>
+            
+            <p><strong>Solutions:</strong></p>
+            <ul>
+                <li><strong>Retrain with recent data</strong></li>
+                <li><strong>Add relevant features</strong></li>
+                <li><strong>Adjust for systematic bias:</strong> Post-processing correction</li>
+                <li><strong>Use different loss function:</strong> MAE instead of MSE</li>
+                <li><strong>Ensemble with simpler model</strong></li>
+                <li><strong>Implement monitoring:</strong> Detect drift early</li>
+            </ul>
+        </div>
+
+        <div class="question">You're given a new dataset with images for classification. How do you preprocess it?</div>
+        <div class="answer">
+            <p><strong>1. Data Exploration:</strong></p>
+            <ul>
+                <li>Check image dimensions, channels (RGB vs grayscale)</li>
+                <li>Check class distribution (balanced vs imbalanced)</li>
+                <li>Visualize sample images from each class</li>
+                <li>Check for corrupted or missing images</li>
+                <li>Analyze image quality, resolution, format</li>
+            </ul>
+            
+            <p><strong>2. Image Resizing:</strong></p>
+            <ul>
+                <li>Resize all images to consistent dimensions</li>
+                <li>Common sizes: 224×224, 256×256 (for pretrained models)</li>
+                <li>Choose based on model architecture and computational resources</li>
+            </ul>
+            <div class="code">from PIL import Image
+import numpy as np
+
+img = Image.open('image.jpg')
+img_resized = img.resize((224, 224))
+img_array = np.array(img_resized)</div>
+            
+            <p><strong>3. Normalization:</strong></p>
+            <ul>
+                <li><strong>Pixel scaling:</strong> Scale to [0, 1] or [-1, 1]</li>
+                <li><strong>Standardization:</strong> Zero mean, unit variance</li>
+                <li><strong>For pretrained models:</strong> Use their specific normalization (ImageNet stats)</li>
+            </ul>
+            <div class="code"># Scale to [0, 1]
+img_normalized = img_array / 255.0
+
+# ImageNet standardization
+mean = [0.485, 0.456, 0.406]
+std = [0.229, 0.224, 0.225]
+img_standardized = (img_array - mean) / std</div>
+            
+            <p><strong>4. Data Augmentation (Training only):</strong></p>
+            <ul>
+                <li><strong>Geometric:</strong> Rotation, flipping, cropping, zooming</li>
+                <li><strong>Color:</strong> Brightness, contrast, saturation adjustments</li>
+                <li><strong>Noise:</strong> Add Gaussian noise</li>
+                <li><strong>Cutout/Mixup:</strong> Advanced augmentation techniques</li>
+            </ul>
+            <div class="code">from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+datagen = ImageDataGenerator(
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True,
+    zoom_range=0.2,
+    shear_range=0.2,
+    fill_mode='nearest'
+)</div>
+            
+            <p><strong>5. Channel Handling:</strong></p>
+            <ul>
+                <li>Convert grayscale to RGB if needed (or vice versa)</li>
+                <li>Handle alpha channel in RGBA images</li>
+                <li>Ensure correct channel ordering (RGB vs BGR)</li>
+            </ul>
+            
+            <p><strong>6. Train-Validation-Test Split:</strong></p>
+            <ul>
+                <li>Split before preprocessing to prevent data leakage</li>
+                <li>Use stratified split for imbalanced classes</li>
+                <li>Typical: 70% train, 15% validation, 15% test</li>
+            </ul>
+            
+            <p><strong>7. Batch Processing:</strong></p>
+            <ul>
+                <li>Load images in batches (not all at once)</li>
+                <li>Use data generators for memory efficiency</li>
+            </ul>
+            <div class="code">from tensorflow.keras.preprocessing.image import ImageDataGenerator
+
+train_datagen = ImageDataGenerator(rescale=1./255)
+train_generator = train_datagen.flow_from_directory(
+    'train/',
+    target_size=(224, 224),
+    batch_size=32,
+    class_mode='categorical'
+)</div>
+            
+            <p><strong>8. Handling Class Imbalance:</strong></p>
+            <ul>
+                <li>Oversample minority class</li>
+                <li>Undersample majority class</li>
+                <li>Use class weights</li>
+                <li>Generate synthetic samples via augmentation</li>
+            </ul>
+            
+            <p><strong>9. Transfer Learning Considerations:</strong></p>
+            <ul>
+                <li>Use preprocessing specific to pretrained model (ResNet, VGG, etc.)</li>
+                <li>Match input size to pretrained model</li>
+            </ul>
+            
+            <p><strong>10. Quality Control:</strong></p>
+            <ul>
+                <li>Remove corrupted images</li>
+                <li>Check for duplicate images</li>
+                <li>Verify labels are correct</li>
+            </ul>
+        </div>
+
+        <div class="page-break"></div>
+        <h2><span class="section-number">7.</span> Coding Questions</h2>
+
+        <div class="question">Implement a simple linear regression from scratch in Python (without libraries).</div>
+        <div class="answer">
+            <div class="code">import numpy as np
+
+class LinearRegressionScratch:
+    """
+    Simple Linear Regression: y = mx + b
+    Using Gradient Descent
+    """
+    def __init__(self, learning_rate=0.01, n_iterations=1000):
+        self.learning_rate = learning_rate
+        self.n_iterations = n_iterations
+        self.weights = None
+        self.bias = None
+        self.losses = []
+    
+    def fit(self, X, y):
+        """
+        Train the model using gradient descent
+        X: features (n_samples, n_features)
+        y: target (n_samples,)
+        """
+        n_samples, n_features = X.shape
+        
+        # Initialize parameters
+        self.weights = np.zeros(n_features)
+        self.bias = 0
+        
+        # Gradient descent
+        for i in range(self.n_iterations):
+            # Forward pass: y_pred = X @ w + b
+            y_pred = np.dot(X, self.weights) + self.bias
+            
+            # Compute loss (MSE)
+            loss = np.mean((y_pred - y) ** 2)
+            self.losses.append(loss)
+            
+            # Compute gradients
+            dw = (2 / n_samples) * np.dot(X.T, (y_pred - y))
+            db = (2 / n_samples) * np.sum(y_pred - y)
+            
+            # Update parameters
+            self.weights -= self.learning_rate * dw
+            self.bias -= self.learning_rate * db
+            
+            # Print progress
+            if (i + 1) % 100 == 0:
+                print(f"Iteration {i+1}: Loss = {loss:.4f}")
+    
+    def predict(self, X):
+        """Make predictions"""
+        return np.dot(X, self.weights) + self.bias
+    
+    def score(self, X, y):
+        """Calculate R² score"""
+        y_pred = self.predict(X)
+        ss_total = np.sum((y - np.mean(y)) ** 2)
+        ss_residual = np.sum((y - y_pred) ** 2)
+        r2 = 1 - (ss_residual / ss_total)
+        return r2
+
+
+# Example usage
+if __name__ == "__main__":
+    # Generate sample data
